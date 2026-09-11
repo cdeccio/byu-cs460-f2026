@@ -110,7 +110,7 @@ might need to adapt these instructions.
      a. Run the following from the command line to temporarily become `root`
         (system administrator):
 
-        ```
+        ```bash
         su -
         ```
 
@@ -121,7 +121,7 @@ might need to adapt these instructions.
 
         (Replace "$USER" with the username of your regular, non-root user.
 
-        ```
+        ```bash
         usermod -a -G sudo $USER
         ```
 
@@ -130,7 +130,7 @@ might need to adapt these instructions.
 
      d. Test your `sudo` access by running the following:
 
-        ```
+        ```bash
         sudo ls -l /root/
         ```
 
@@ -155,14 +155,14 @@ might need to adapt these instructions.
      c. From the open terminal, run the following to mount the "inserted"
         virtual CD containing the guest additions.
 
-        ```
+        ```bash
         mount /media/cdrom
         ```
 
      d. From the open terminal, run the following commands to build and install
         the VirtualBox Guest Additions for your VM:
 
-        ```
+        ```bash
         sudo apt install linux-headers-amd64 build-essential
         sudo sh /media/cdrom/VBoxLinuxAdditions.run
         ```
@@ -201,7 +201,7 @@ might need to adapt these instructions.
 
      a. Run the following to add your user to the `vboxsf` group:
 
-        ```
+        ```bash
         sudo usermod -a -G vboxsf $USER
         ```
 
@@ -222,7 +222,7 @@ might need to adapt these instructions.
  15. In the VM, open a terminal, and run the following to remove some
      unnecessary packages from your VM:
 
-     ```
+     ```bash
      sudo apt purge libreoffice-{impress,math,writer,draw,base-core,core,help-common,core-nogui} xscreensaver
      sudo apt autoremove
      ```
@@ -254,7 +254,7 @@ might need to adapt these instructions.
      targeted capabilities, so an unprivileged user can run them to observe
      network packets without elevating to `root`:
 
-     ```
+     ```bash
      sudo setcap cap_net_raw=eip /usr/bin/tcpdump
      sudo setcap cap_net_raw=eip /usr/bin/wireshark
      sudo setcap cap_net_raw=eip /usr/bin/dumpcap
@@ -359,7 +359,7 @@ might need to adapt these instructions.
     e. Use the following command to ensure that the shared volume is
        mounted automatically at boot:
 
-       ```
+       ```bash
        sudo -e /etc/fstab
        ```
 

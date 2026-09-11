@@ -57,9 +57,10 @@ Run the following commands on host `a` to show its network interface
 configuration, IP forwarding table, and ARP table:
 
 ```bash
-a$ ip addr 2> /dev/null
-a$ ip route
-a$ ip neigh
+# a$
+ip addr 2> /dev/null
+ip route
+ip neigh
 ```
 
 (The `2> /dev/null` simply redirects standard error, which is noisy due to
@@ -101,7 +102,8 @@ going to a router first (i.e., the "next hop").
 Now run the following command on `a` to send a single packet from `a` to `b`:
 
 ```bash
-a$ ping -c 1 -W 1 10.0.0.2
+# a$
+ping -c 1 -W 1 10.0.0.2
 ```
 
 Look at the Wireshark window, and sort by "Time".
@@ -133,7 +135,8 @@ Look at the Wireshark window, and sort by "Time".
 Re-run the `ip neigh` command to see the new state of `a`'s ARP table:
 
 ```bash
-a$ ip neigh
+# a$
+ip neigh
 ```
 
  10. Which entries are now in `a`'s ARP table?
@@ -142,7 +145,8 @@ a$ ip neigh
 Now run the following command on `a` to send a single packet from `a` to `c`:
 
 ```bash
-a$ ping -c 1 -W 1 10.0.1.2
+# a$
+ping -c 1 -W 1 10.0.1.2
 ```
 
 (The `-c` option tells `ping` to send just one packet, and the `-W` option
@@ -156,7 +160,8 @@ tells `ping` to only wait for one second for a response.)
 Let's now add an entry to `a`'s forwarding table.  The general formula is this:
 
 ```
-$ sudo ip route add <prefix> via <next_hop> dev <int>
+# $
+sudo ip route add <prefix> via <next_hop> dev <int>
 ```
 
 where `<prefix>` is an IP prefix (e.g., `192.0.2.0/24`), `<int>` is the name of
@@ -198,7 +203,8 @@ paragraphs to set run the default forwarding entry for host `a`.
 Again run the following command on `a` to send a single packet from `a` to `c`:
 
 ```bash
-a$ ping -c 1 -W 1 10.0.1.2
+# a$
+ping -c 1 -W 1 10.0.1.2
 ```
 
  13. Consider the very first (in terms of time) frame sent from `r1` on
@@ -220,9 +226,10 @@ a$ ping -c 1 -W 1 10.0.1.2
 
 Run the `ip neigh` command on `r1` to see the state of its ARP table:
 
- ```bash
- r1$ ip neigh
- ```
+```bash
+# r1$
+ip neigh
+```
 
  17. Which entries are in `r1`'s ARP table?
 
@@ -236,7 +243,8 @@ outside its subnet, including the ping response to `a`.
 Again run the following command on `a` to send a single packet from `a` to `c`:
 
 ```bash
-a$ ping -c 1 -W 1 10.0.1.2
+# a$
+ping -c 1 -W 1 10.0.1.2
 ```
 
  19. Was the ping successful?  That is, did `a` get a response?  Hint: at this
@@ -245,7 +253,8 @@ a$ ping -c 1 -W 1 10.0.1.2
 Run the following command on `a` to send a single packet from `a` to `e`:
 
 ```bash
-a$ ping -c 1 -W 1 10.0.3.2
+# a$
+ping -c 1 -W 1 10.0.3.2
 ```
 
  20. Was the ping successful?  That is, did `a` get a response?
@@ -282,7 +291,8 @@ using `ip route del`.
 Run the following command on `a` to send a single packet from `a` to `e`:
 
 ```bash
-a$ ping -c 1 -W 1 10.0.3.2
+# a$
+ping -c 1 -W 1 10.0.3.2
 ```
 
  21. Was the ping successful?  That is, did `a` get a response?  Hint: it
@@ -296,7 +306,8 @@ you send a datagram from `a` to destination `8.8.8.8`?  Answer the question to
 yourself before testing it.  Then run the following to actually test it:
 
 ```bash
-a$ ping -c 1 -W 1 8.8.8.8
+# a$
+ping -c 1 -W 1 8.8.8.8
 ```
 
  22. What happened with the ICMP echo request?
@@ -347,8 +358,9 @@ By default, all terminals will show up, but you can adjust this with the
 
 Run the following to send an ICMP echo request/reply between `h1` and `h2`:
 
-```
-h1$ ping -c 1 -W 1 10.0.1.2
+```bash
+# h1$
+ping -c 1 -W 1 10.0.1.2
 ```
 
  23. What is the TTL reported by `ping`?
@@ -361,29 +373,34 @@ For each part of this problem, run the given command from `h1`, look at the
 Wireshark capture, and then respond with 1) the host or router the sent the
 ICMP error and 2) a *brief* description of why the ICMP error was sent.
 
- ```
- h1$ ping -c 1 -W 1 -t 3 10.0.1.2
- ```
- (`-t` sets the starting TTL)
+```bash
+# h1$
+ping -c 1 -W 1 -t 3 10.0.1.2
+```
+
+(`-t` sets the starting TTL)
 
  25. Which device sent the ICMP message?
  26. What was the cause of the ICMP message?
 
-```
-h1$ ping -c 1 -W 1 10.0.1.4
+```bash
+# h1$
+ping -c 1 -W 1 10.0.1.4
 ```
  27. Which device sent the ICMP message?
  28. What was the cause of the ICMP message?
 
 
-```
-h1$ ping -c 1 -W 1 10.0.3.1
+```bash
+# h1$
+ping -c 1 -W 1 10.0.3.1
 ```
  29. Which device sent the ICMP message?
  30. What was the cause of the ICMP message?
 
-```
-h1$ dig @10.0.1.2 +timeout=1 +tries=1 . NS
+```bash
+# h1$
+dig @10.0.1.2 +timeout=1 +tries=1 . NS
 ```
 (`dig` is a command-line DNS tool.  For the purposes of this
 assignment, just know that it is sending a single UDP datagram to
@@ -396,8 +413,9 @@ on `h2`. :))
 Run the following command from `h1`, which, sends an ICMP echo request of size
 1500 to 10.0.1.2:
 
-```
-h1$ ping -c 1 -W 1 -s 1500 -M dont 10.0.1.2
+```bash
+# h1$
+ping -c 1 -W 1 -s 1500 -M dont 10.0.1.2
 ```
 
 Use wireshark to analyze the IP fragments resulting from the ICMP echo request.

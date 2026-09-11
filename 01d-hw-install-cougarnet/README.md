@@ -83,7 +83,7 @@ sudo pip3 install --root-user-action ignore --break-system-packages .
 
     a. Open `/etc/frr/daemons` for editing using the following command:
 
-       ```
+       ```bash
        sudo -e /etc/frr/daemons
        ```
   
@@ -104,7 +104,7 @@ sudo pip3 install --root-user-action ignore --break-system-packages .
 
     b. Restart FRR by running the following:
 
-       ```
+       ```bash
        sudo systemctl restart frr.service
        ```
 

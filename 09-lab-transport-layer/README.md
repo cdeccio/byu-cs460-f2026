@@ -110,7 +110,8 @@ start it up:
 Run the following command:
 
 ```bash
-$ cougarnet --disable-ipv6 --display scenario1.cfg
+# $
+cougarnet --disable-ipv6 --display scenario1.cfg
 ```
 
 At this point, the only output will be log messages indicating that messages
@@ -410,7 +411,8 @@ At this point, you should be able to run the following command to run
 scenario 1:
 
 ```bash
-$ cougarnet --disable-ipv6 --display --wireshark=a-s1 scenario1.cfg
+# $
+cougarnet --disable-ipv6 --display --wireshark=a-s1 scenario1.cfg
 ```
 
 After a few seconds, you should see a log message indicating that host `a` is
@@ -460,7 +462,8 @@ you should see output for a similar exchange between hosts `c` and `b`.
 When it is working properly, test also with the `--terminal=none` option:
 
 ```bash
-$ cougarnet --disable-ipv6 --terminal=none scenario1.cfg
+# $
+cougarnet --disable-ipv6 --terminal=none scenario1.cfg
 ```
 
 
@@ -641,7 +644,8 @@ At this point, you should be able to run the following command to run scenario
 2:
 
 ```bash
-$ cougarnet --disable-ipv6 --display --wireshark=a-s1 scenario2.cfg
+# $
+cougarnet --disable-ipv6 --display --wireshark=a-s1 scenario2.cfg
 ```
 After a few seconds, you should see log messages for packets the TCP SYN
 packets sent in the scenario, and you should also see those packets in the
@@ -692,9 +696,10 @@ should see output for a similar exchange between hosts `c` and `b`.
 When it is working properly, test also with the `--terminal=none` option, and
 make sure it works for both scenarios:
 
-```
-$ cougarnet --disable-ipv6 --terminal=none scenario1.cfg
-$ cougarnet --disable-ipv6 --terminal=none scenario2.cfg
+```bash
+# $
+cougarnet --disable-ipv6 --terminal=none scenario1.cfg
+cougarnet --disable-ipv6 --terminal=none scenario2.cfg
 ```
 
 
@@ -789,9 +794,10 @@ Test your implementation against scenarios 1 and 2.  Where you previously
 received no response from the server after sending a packet that did not match
 any socket, you should now see responses from the server.
 
-```
-$ cougarnet --disable-ipv6 --terminal=none scenario1.cfg
-$ cougarnet --disable-ipv6 --terminal=none scenario2.cfg
+```bash
+# $
+cougarnet --disable-ipv6 --terminal=none scenario1.cfg
+cougarnet --disable-ipv6 --terminal=none scenario2.cfg
 ```
 
 
@@ -814,7 +820,8 @@ Use the following commands to create a directory, place your working files in
 it, and tar it up:
 
 ```bash
-$ mkdir transport-lab
-$ cp headers.py test_headers.py transporthost.py mysocket.py transport-lab
-$ tar -zcvf transport-lab.tar.gz transport-lab
+# $
+mkdir transport-lab
+cp headers.py test_headers.py transporthost.py mysocket.py transport-lab
+tar -zcvf transport-lab.tar.gz transport-lab
 ```

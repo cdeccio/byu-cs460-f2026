@@ -117,8 +117,9 @@ start it up:
 
 Run the following command:
 
-```
-$ cougarnet --disable-ipv6 --display scenario1.cfg
+```bash
+# $
+cougarnet --disable-ipv6 --display scenario1.cfg
 ```
 
 After a few seconds of awkward silence, you will see output on the terminal
@@ -316,8 +317,9 @@ the cougarnet output matches appropriately.
 
 When it is working properly, test also with the `--terminal=none` option:
 
-```
-$ cougarnet --disable-ipv6 --terminal=none scenario1.cfg
+```bash
+# $
+cougarnet --disable-ipv6 --terminal=none scenario1.cfg
 ```
 
 
@@ -439,12 +441,12 @@ before you begin, as it might be easier for you to do one before the other.
     see how they are called and what correct output looks.  Additionally, you
     can test functionality with the following command:
 
-    ```
+    ```bash
     python3 -m doctest prefix.py
     ```
 
     At this point, the following should run without error (and without output):
-    ```
+    ```bash
     python3 -m doctest prefix.py
     ```
 
@@ -457,7 +459,7 @@ before you begin, as it might be easier for you to do one before the other.
 
     - The return values in the doc tests must be correct; and
     - The following should run without error (and without output):
-      ```
+      ```bash
       python3 -m doctest prefix.py
       ```
 
@@ -484,7 +486,7 @@ before you begin, as it might be easier for you to do one before the other.
 
     - The return values in the doc tests must be correct; and
     - The following should run without error (and without output):
-    ```
+    ```bash
     python3 -m doctest forwarding_table.py
     ```
 
@@ -516,8 +518,9 @@ functionality.  Your focus is on the host/router functionality.
 Take a look at the contents of `scenario2.cfg`.  Then run the following to
 start it up:
 
-```
-$ cougarnet --disable-ipv6 scenario2.cfg
+```bash
+# $
+cougarnet --disable-ipv6 scenario2.cfg
 ```
 
 After a few seconds of awkward silence, you will see output on the terminal
@@ -722,8 +725,9 @@ the cougarnet output matches appropriately.
 
 When it is working properly, test also with the `--terminal=none` option:
 
-```
-$ cougarnet --disable-ipv6 --terminal=none scenario2.cfg
+```bash
+# $
+cougarnet --disable-ipv6 --terminal=none scenario2.cfg
 ```
 
 
@@ -777,7 +781,7 @@ testing of parts 1 and 3.  This is not a replacement for manual testing but can
 be used as a sanity check.  You can use it by simply running the following in
 the working directory:
 
-```
+```bash
 ./driver.py
 ```
 
@@ -797,13 +801,15 @@ following distribution:
  - Part 2: 32 points
    - 8 points for correct doctests in `prefix.py`
    - 8 points for running the following without error:
-     ```
-     $ python -m doctest prefix.py
+     ```bash
+     # $
+     python -m doctest prefix.py
      ```
    - 8 points for correct doctests in `forwarding_table.py`
    - 8 points for running the following without error:
-     ```
-     $ python -m doctest forwarding_table.py
+     ```bash
+     # $
+     python -m doctest forwarding_table.py
      ```
  - Part 3: 28 points
    - 22 points for first 11 tests (2 points each)
@@ -849,9 +855,10 @@ working `switch.py` from the
 [Link Layer Lab](../04-lab-link-layer/) into your current directory.  Then run
 the following:
 
-```
-$ cougarnet --disable-ipv6 --terminal=none scenario1-mine.cfg
-$ cougarnet --disable-ipv6 --terminal=none scenario2-mine.cfg
+```bash
+# $
+cougarnet --disable-ipv6 --terminal=none scenario1-mine.cfg
+cougarnet --disable-ipv6 --terminal=none scenario2-mine.cfg
 ```
 
 Yep, that is all your software moving around real frames and packets!
@@ -912,8 +919,9 @@ proceed with checking your ARP table and sending an ARP request, if necessary.
 
 To test your handling of IP subnet-level broadcasts, use the following: 
 
-```
-$ cougarnet --disable-ipv6 --terminal=none scenario3-opt.cfg
+```bash
+# $
+cougarnet --disable-ipv6 --terminal=none scenario3-opt.cfg
 ```
 
 This is the same topology as that used 
@@ -935,8 +943,9 @@ This is the same topology as that used
 Use the following commands to create a directory, place your working files in
 it, and tar it up:
 
-```
-$ mkdir network-lab
-$ cp host.py prefix.py forwarding_table.py network-lab
-$ tar -zcvf network-lab.tar.gz network-lab
+```bash
+# $
+mkdir network-lab
+cp host.py prefix.py forwarding_table.py network-lab
+tar -zcvf network-lab.tar.gz network-lab
 ```

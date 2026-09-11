@@ -64,8 +64,9 @@ The files given to you for this lab are the following:
 Take a look at the contents of `scenario1a.cfg`.  Then run the following to
 start it up:
 
-```
-$ cougarnet --display --disable-ipv6 scenario1a.cfg
+```bash
+# $
+cougarnet --display --disable-ipv6 scenario1a.cfg
 ```
 
 The `--disable-ipv6` option is used on the command line here and throughout the
@@ -109,8 +110,9 @@ frames (and later packets) is part of the learning activities.
 Now look at the contents of `scenario1.cfg`, and run the following to start it
 up:
 
-```
-$ cougarnet --display --disable-ipv6 scenario1.cfg
+```bash
+# $
+cougarnet --display --disable-ipv6 scenario1.cfg
 ```
 
 It is similar in some senses, but very different in some others.  Note the
@@ -292,9 +294,10 @@ the output for your switch implementation matches appropriately.
 
 When it is working properly, test also with the `--terminal=none` option:
 
-```
-$ cougarnet --disable-ipv6 --terminal=none scenario1.cfg
-$ cougarnet --disable-ipv6 --terminal=none scenario2.cfg
+```bash
+# $
+cougarnet --disable-ipv6 --terminal=none scenario1.cfg
+cougarnet --disable-ipv6 --terminal=none scenario2.cfg
 ```
 
 You can also use the driver provided for
@@ -352,10 +355,11 @@ scenarios 1 and 2, without having to make any special provisions.
 When your switch implementation is working properly, test all three scenarios
 with the `--terminal=none` option:
 
-```
-$ cougarnet --disable-ipv6 --terminal=none scenario1.cfg
-$ cougarnet --disable-ipv6 --terminal=none scenario2.cfg
-$ cougarnet --disable-ipv6 --terminal=none scenario3.cfg
+```bash
+# $
+cougarnet --disable-ipv6 --terminal=none scenario1.cfg
+cougarnet --disable-ipv6 --terminal=none scenario2.cfg
+cougarnet --disable-ipv6 --terminal=none scenario3.cfg
 ```
 
 You can also use the driver provided for
@@ -369,7 +373,7 @@ testing.  This is not a replacement for manual testing but can be used as a
 sanity check.  You can use it by simply running the following in the working
 directory:
 
-```
+```bash
 ./driver.py
 ```
 
