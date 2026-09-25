@@ -23,6 +23,7 @@ transport-layer multiplexing, and the TCP three-way handshake.
  - [Part 4 - ICMP Port Unreachable and TCP Reset (Extra Credit)](#part-4---icmp-port-unreachable-and-tcp-reset-extra-credit)
    - [Instructions](#instructions-3)
    - [Testing](#testing-2)
+ - [Evaluation](#evaluation)
  - [General Helps](#general-helps)
  - [Submission](#submission)
 
@@ -793,6 +794,19 @@ any socket, you should now see responses from the server.
 cougarnet --disable-ipv6 --terminal=none scenario1.cfg
 cougarnet --disable-ipv6 --terminal=none scenario2.cfg
 ```
+
+
+# Evaluation
+
+Your score will be computed out of a maximum of 100 points based on the
+following distribution:
+
+ - Part 1: 68 points (+4 points extra credit)
+   - 34 points for scenario 1 (+2 points extra credit)
+   - 34 points for scenario 2 (+2 points extra credit)
+ - Part 2: 32 points (+2 points extra credit)
+   - 16 points for correct unit test contents (+1 point extra credit)
+   - 16 points for correct unit test results (+1 point extra credit)
 
 
 # General Helps
