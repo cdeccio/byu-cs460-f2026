@@ -20,6 +20,7 @@ and communicate over that path from socket to socket, process to process.
    - [Integrate TCP Socket Functionality](#integrate-tcp-socket-functionality)
    - [Integrate Layer-2 Switching](#integrate-layer-2-switching)
  - [Testing](#testing)
+ - [Evaluation](#evaluation)
  - [Submission](#submission)
 
 
@@ -281,6 +282,16 @@ cougarnet --disable-ipv6 --terminal=none scenario5-norouting.cfg
 
 You can submit that code that works against `scenario5-norouting.cfg` for
 lesser credit.
+
+
+# Evaluation
+
+Your score will be computed out of a maximum of 100 points based on the
+following distribution:
+
+ - Part 1: 70 points
+ - Part 2: 30 points
+ - Part 3: 6 points (extra credit)
 
 
 # Submission
