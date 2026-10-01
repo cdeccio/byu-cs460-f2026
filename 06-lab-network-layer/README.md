@@ -339,33 +339,9 @@ See the documentation for the Link-Layer lab for
 ### ARP Packets
 
 Your code will need to both create ARP packets for sending and parse ARP
-packets that have been received on the "wire".  ARP packets have the following
-format:
-
-<table border="1">
-<tr>
-<th>00</th><th>01</th><th>02</th><th>03</th><th>04</th><th>05</th><th>06</th><th>07</th>
-<th>08</th><th>09</th><th>10</th><th>11</th><th>12</th><th>13</th><th>14</th><th>15</th>
-<th>16</th><th>17</th><th>18</th><th>19</th><th>20</th><th>21</th><th>22</th><th>23</th>
-<th>24</th><th>25</th><th>26</th><th>27</th><th>28</th><th>29</th><th>30</th><th>31</th></tr>
-<tr>
-<td colspan="16">Hardware type</td>
-<td colspan="16">Protocol type</td></tr>
-<tr>
-<td colspan="8">Hardware address length</td>
-<td colspan="8">Protocol address length</td>
-<td colspan="16">Opcode</td></tr>
-<tr>
-<td colspan="32">Source hardware address :::</td></tr>
-<tr>
-<td colspan="32">Source protocol address :::</td></tr>
-<tr>
-<td colspan="32">Destination hardware address :::</td></tr>
-<tr>
-<td colspan="32">Destination protocol address :::</td></tr>
-<tr>
-<td colspan="32">Data :::</td></tr>
-</table>
+packets that have been received on the "wire". See the 
+[Networking Reference](../NETWORKING_REFERENCE.md#arp-packet) for information 
+on the format of ARP packets.
 
 Regarding the fields:
  - Hardware Type will always be Ethernet (`ARPHRD_ETHER = 1`)
@@ -377,16 +353,14 @@ Regarding the fields:
  - Operation (or opcode) will either be request (`ARPOP_REQUEST = 1`) or reply
    (`ARPOP_REPLY = 2`).
  - The length of the hardware and protocol addresses will match the value of
-   the Hardware Address Length and Protocol Address Length fields--that is, 6
-   and 4, respectively.  They are shown as variable length (`:::`) because they
-   could be applied to hardware other than Ethernet and protocols other than
-   IPv4.
+   the Hardware Address Length and Protocol Address Length fields – that is, 6
+   and 4, respectively. In practice, the two fields have a variable length since
+   they could be applied to hardware other than Ethernet and protocols other than
+   IPv4. For this lab we will only be using Ethernet and IPv4 for the fields.
  - While "Hardware" and "Protocol" are the more generic terms for the fields,
    they are referred to in the instructions as "MAC" and "IP" since those are
    the protocols we are working with.
 
-See the [Networking Reference](../NETWORKING_REFERENCE.md#arp-packet) for more
-information on ARP packets.
 
 ### Address Representation Conversion
 
@@ -735,44 +709,13 @@ cougarnet --disable-ipv6 --terminal=none scenario2.cfg
 ### IPv4 Packets
 
 Your code will need to parse IPv4 packets, both as received from the "wire" and
-as passed by a method (e.g., `send_packet()`)--in both cases as `bytes`
-instances.  The packet that you will be receiving looks like this:
-
-<table border="1">
-<tr>
-<th>00</th><th>01</th><th>02</th><th>03</th><th>04</th><th>05</th><th>06</th><th>07</th>
-<th>08</th><th>09</th><th>10</th><th>11</th><th>12</th><th>13</th><th>14</th><th>15</th>
-<th>16</th><th>17</th><th>18</th><th>19</th><th>20</th><th>21</th><th>22</th><th>23</th>
-<th>24</th><th>25</th><th>26</th><th>27</th><th>28</th><th>29</th><th>30</th><th>31</th></tr>
-<tr>
-<td colspan="4">Version</td>
-<td colspan="4">IHL</td>
-<td colspan="8">Differentiated Services</td>
-<td colspan="16">Total length</td></tr>
-<tr>
-<td colspan="16">Identification</td>
-<td colspan="3">Flags</td>
-<td colspan="13">Fragment offset</td></tr>
-<tr>
-<td colspan="8">TTL</td>
-<td colspan="8">Protocol</td>
-<td colspan="16">Header checksum</td></tr>
-<tr>
-<td colspan="32">Source IP address</td></tr>
-<tr>
-<td colspan="32">Destination IP address</td></tr>
-<tr>
-<td colspan="32">Options and padding :::</td></tr>
-</table>
-
-See the [Networking Reference](../NETWORKING_REFERENCE.md#ipv4-header) for more
-information on IPv4 packets.
+as passed by a method (e.g., `send_packet()`) – in both cases as `bytes`
+instances. See the [Networking Reference](../NETWORKING_REFERENCE.md#ipv4-header) for information on the format and fields of IPv4 packets.
 
 ### Address Representation Conversion
 
 See the help on
 [Address Representation Conversion](#address-representation-conversion) above.
-above.
 
 
 # Automated Testing
