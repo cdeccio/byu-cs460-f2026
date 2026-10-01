@@ -405,7 +405,9 @@ following distribution:
 
 Your code will need to parse Ethernet frames from the "wire" as `bytes`
 instances. See the [Networking Reference](../NETWORKING_REFERENCE.md#ethernet) for
-info on the Ethernet frame format.
+information on the standard Ethernet frame format. You will also be working with
+802.1Q Ethernet frames. Information on the 802.1Q frame format is also found in
+the [Networking Reference](../NETWORKING_REFERENCE.md#8021q-vlan-ethernet-frame).
 
 Note that a complete Ethernet frame also has fields for preamble and Cyclic
 Redundancy Check (CRC) when it actually travels on the wire.  However, these
