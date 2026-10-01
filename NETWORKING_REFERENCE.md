@@ -102,17 +102,17 @@ Finally, at the bottom is all the bytes from the example concatenated together, 
 
 | Field | Size | Notes | Example |
 | --- | ---: | --- | --- |
-| Version | 4 bits | IPv4 value is `4` | `45` * |
+| Version | 4 bits | IP version; set to `4` for IPv4 | `45` * |
 | IHL | 4 bits | Header length in 32-bit words; `5` means 20 bytes | * |
 | DSCP | 6 bits | In this class, set to `0` | `00` * |
 | ECN | 2 bits | In this class, set to `0` | * |
-| Total length | 2 bytes | IPv4 header plus payload | `00 21` |
+| Total length | 2 bytes | Length of IPv4 header plus payload, in bytes | `00 21` |
 | Identification | 2 bytes | Fragmentation support | `12 34` |
 | Flags | 3 bits | Fragmentation control | `40 00` * |
 | Fragment offset | 13 bits | Fragmentation support | * |
 | TTL | 1 byte | Decremented by each router | `40` |
-| Protocol | 1 byte | Identifies the next payload protocol | `11` |
-| Header checksum | 2 bytes | Covers the IPv4 header | `00 00` |
+| Protocol | 1 byte | Identifies protocol of data contained in payload | `11` |
+| Header checksum | 2 bytes | Used for error checking of IPv4 header | `00 00` |
 | Source address | 4 bytes | Sender IPv4 address | `c0 00 02 01` |
 | Destination address | 4 bytes | Receiver IPv4 address | `c0 00 02 02` |
 | Options and padding | variable | Included only when IHL is greater than 5 | N/A |
@@ -164,15 +164,15 @@ c0 00 02 02
 | Source port | 2 bytes | Sending application port | `0f a0` |
 | Destination port | 2 bytes | Receiving application port | `04 d2` |
 | Sequence number | 4 bytes | Position of segment data in the byte stream | `11 22 33 44` |
-| Acknowledgment number | 4 bytes | Next byte expected by the sender of the ACK | `11 22 33 44` |
+| Acknowledgment number | 4 bytes | Next sequence number that the sender is expecting | `11 22 33 44` |
 | Data offset | 4 bits | Header length in 4-byte words; `5` means 20 bytes | `50 12` * |
 | Reserved | 3 bits | `000` in the lab; not currently used | * |
 | ECN | 3 bits | `000` in the lab | * |
 | Control bits | 6 bits | `URG`, `ACK`, `PSH`, `RST`, `SYN`, `FIN` | * |
-| Window | 2 bytes | Advertised receive window; 64 is used as a reasonable lab value | `00 40` |
+| Window | 2 bytes | Advertised receive window; use `64` as a reasonable value for the labs | `00 40` |
 | Checksum | 2 bytes | Set to zero in the transport lab | `00 00` |
-| Urgent pointer | 2 bytes | Not used in the lab | `00 00` |
-| Options and padding | *variable* | Makes the header a multiple of 4 bytes | N/A |
+| Urgent pointer | 2 bytes | Not used in the lab, set to zero | `00 00` |
+| Options and padding | *variable* | Not used in labs. Various options and padding to make header size a multiple of 4 bytes. | N/A |
 | *Data* | *variable* | Application payload | `68 65 6c 6c 6f` |
 
 **Shared Bytes:** Asterisks are for bytes that are shared between fields. Bytes ``50 12`` are ``01010000 00010010``: The first four bits ``0101`` are the Data Offset, equaling ``5`` words (20 bytes). The next three bits ``000`` are Reserved, which is just set to ``0``. The next three bits ``000`` are for ECN, and the last six bits, ``010010``, are the Control Bits, equaling ACK + SYN (using the order URG, ACK, PSH, RST, SYN, FIN). The packed fields concatenate as ``0101 000 000 010010``.
@@ -195,12 +195,13 @@ c0 00 02 02
 | --- | ---: | --- | --- |
 | Type | 1 byte | Identifies the ICMP message type | `08` |
 | Code | 1 byte | Provides additional context for the message type | `00` |
-| Checksum | 2 bytes | Covers the ICMP header and message data | `00 00` |
-| Message-specific fields and data | *variable* | Depends on the ICMP message type | `00 01 00 01 68 65 6c 6c 6f` |
+| Checksum | 2 bytes | Used for error checking of the ICMP header and message data | `00 00` |
+| Message-specific fields and data | 4 bytes | Depends on the ICMP message type; set to zero for lab | `00 00 00 00` |
+| *Data* | *variable* | Payload data | `01 68 65 6c 6c 6f` |
 
 #### Full Example:
 ```text
-08 00 00 00 00 01 00 01 68 65 6c 6c 6f
+08 00 00 00 00 00 00 00 01 68 65 6c 6c 6f
 ```
 
 ## Various Notes
