@@ -343,24 +343,15 @@ packets that have been received on the "wire". See the
 [Networking Reference](../NETWORKING_REFERENCE.md#arp-packet) for information 
 on the format of ARP packets.
 
-Regarding the fields:
- - Hardware Type will always be Ethernet (`ARPHRD_ETHER = 1`)
- - Protocol Type will always be IPv4 (`ETH_P_IP = 0x0800`)
- - Hardware Address Length will always be 6 (MAC addresses are six bytes
-   long)
- - Protocol Address Length will always be 4 (IPv4 addresses are four bytes
-   long)
- - Operation (or opcode) will either be request (`ARPOP_REQUEST = 1`) or reply
-   (`ARPOP_REPLY = 2`).
- - The length of the hardware and protocol addresses will match the value of
-   the Hardware Address Length and Protocol Address Length fields – that is, 6
-   and 4, respectively. In practice, the two fields have a variable length since
-   they could be applied to hardware other than Ethernet and protocols other than
-   IPv4. For this lab we will only be using Ethernet and IPv4 for the fields.
- - While "Hardware" and "Protocol" are the more generic terms for the fields,
-   they are referred to in the instructions as "MAC" and "IP" since those are
-   the protocols we are working with.
+The length of the hardware and protocol addresses will match the value of
+the Hardware Address Length and Protocol Address Length fields – that is, 6
+and 4, respectively. In theory, the two fields have a variable length since
+they could be applied to hardware other than Ethernet and protocols other than
+IPv4. However, for this class we will only be using Ethernet and IPv4 for the fields.
 
+While "Hardware" and "Protocol" are the more generic terms for the fields,
+they are referred to in the instructions as "MAC" and "IP" since those are
+the protocols we are working with.
 
 ### Address Representation Conversion
 
