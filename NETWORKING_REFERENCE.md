@@ -193,15 +193,15 @@ c0 00 02 02
 
 | Field | Size | Description | Example |
 | --- | ---: | --- | --- |
-| Type | 1 byte | Identifies the ICMP message type | `08` |
-| Code | 1 byte | Provides additional context for the message type | `00` |
-| Checksum | 2 bytes | Used for error checking of the ICMP header and message data | `00 00` |
+| Type | 1 byte | Identifies the ICMP message type; set to `3` for destination unreachable | `03` |
+| Code | 1 byte | Provides additional context for the message type; set to `3` for port unreachable | `03` |
+| Checksum | 2 bytes | Used for error checking of the ICMP header and message data; set to zero for lab | `00 00` |
 | Message-specific fields and data | 4 bytes | Depends on the ICMP message type; set to zero for lab | `00 00 00 00` |
-| *Data* | *variable* | Payload data | `01 68 65 6c 6c 6f` |
+| *Data* | *variable* | Payload data | `68 65 6c 6c 6f` |
 
 #### Full Example:
 ```text
-08 00 00 00 00 00 00 00 01 68 65 6c 6c 6f
+03 03 00 00 00 00 00 00 68 65 6c 6c 6f
 ```
 
 ## Various Notes

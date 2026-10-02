@@ -662,15 +662,12 @@ python3 -m unittest test_headers.py
 
 ### ICMP Port Unreachable
 
-Whenever a UDP packet arrives for which there is no matching socket, return an
-ICMP message to the sender with the following characteristics:
-
- - type: 3 (Destination unreachable)
- - code: 3 (Destination port unreachable)
- - checksum: 0
- - message-specific fields and data: 0
- - payload: the UDP datagram that was received by the host, complete with its
-   original IP and UDP headers
+Whenever a UDP packet arrives for which there is no matching socket, return a
+"Port Unreachable" ICMP message. The ICMP message should have an ICMP header and a
+payload containing the UDP datagram that was received by the host, complete with 
+its original IP and UDP headers. You should refer to the 
+[Networking Reference](../NETWORKING_REFERENCE.md#icmp-header) for what values to 
+use in the ICMP header fields.
 
 
 ### TCP Reset
