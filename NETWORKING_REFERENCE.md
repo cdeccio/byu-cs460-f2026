@@ -41,16 +41,14 @@ Finally, at the bottom is all the bytes from the example concatenated together, 
 
 | Field | Size | Description | Example |
 | --- | ---: | --- | --- |
-| Destination MAC address | 6 bytes | Intended receiver; `ff:ff:ff:ff:ff:ff` is broadcast | `01 02 03 04 05 06` |
-| Source MAC address | 6 bytes | Sender on the local link | `aa bb cc dd ee ff` |
-| 802.1Q header | 4 bytes | An optional tag to support VLANs | `81 00 00 19` |
-| EtherType | 2 bytes | Identifies the payload protocol | `08 00` |
+| Destination MAC address | 6 bytes | Intended receiver; `ff:ff:ff:ff:ff:ff` is broadcast | <code style="color:#d9534f">01 02 03 04 05 06</code> |
+| Source MAC address | 6 bytes | Sender on the local link | <code style="color:#5cb85c">aa bb cc dd ee ff</code> |
+| 802.1Q header | 4 bytes | An optional tag to support VLANs | <code style="color:#5bc0de">81 00 00 19</code> |
+| EtherType | 2 bytes | Identifies the payload protocol | <code style="color:#f0ad4e">08 00</code> |
 | *Payload* | *variable* | Usually an IPv4 datagram or ARP packet. | N/A |
 
 #### Full Example:
-```text
-01 02 03 04 05 06 aa bb cc dd ee ff 81 00 00 19 08 00
-```
+<pre><code><span style="color:#d9534f">01 02 03 04 05 06</span> <span style="color:#5cb85c">aa bb cc dd ee ff</span> <span style="color:#5bc0de">81 00 00 19</span> <span style="color:#f0ad4e">08 00</span></code></pre>
 
 ## ARP packet
 
@@ -72,22 +70,19 @@ Finally, at the bottom is all the bytes from the example concatenated together, 
 
 | Field | Size | Description | Example |
 | --- | ---: | --- | --- |
-| Hardware type | 2 bytes | Ethernet: `ARPHRD_ETHER = 1` | `00 01` |
-| Protocol type | 2 bytes | IPv4: `ETH_P_IP = 0x0800` | `08 00` |
-| Hardware address length | 1 byte | Ethernet MAC length: `6` | `06` |
-| Protocol address length | 1 byte | IPv4 address length: `4` | `04` |
-| Opcode | 2 bytes | Request `1`, reply `2` | `00 01` |
-| Sender hardware address | 6 bytes | Sender MAC | `11 22 33 44 55 66` |
-| Sender protocol address | 4 bytes | Sender IPv4 address | `c0 00 02 01` |
-| Target hardware address | 6 bytes | Target MAC; may be zero in a request | `aa bb cc dd ee ff` |
-| Target protocol address | 4 bytes | Target IPv4 address | `c0 00 02 02` |
+| Hardware type | 2 bytes | Ethernet: `ARPHRD_ETHER = 1` | <code style="color:#d9534f">00 01</code> |
+| Protocol type | 2 bytes | IPv4: `ETH_P_IP = 0x0800` | <code style="color:#5cb85c">08 00</code> |
+| Hardware address length | 1 byte | Ethernet MAC length: `6` | <code style="color:#5bc0de">06</code> |
+| Protocol address length | 1 byte | IPv4 address length: `4` | <code style="color:#f0ad4e">04</code> |
+| Opcode | 2 bytes | Request `1`, reply `2` | <code style="color:#d9534f">00 01</code> |
+| Sender hardware address | 6 bytes | Sender MAC | <code style="color:#5cb85c">11 22 33 44 55 66</code> |
+| Sender protocol address | 4 bytes | Sender IPv4 address | <code style="color:#5bc0de">c0 00 02 01</code> |
+| Target hardware address | 6 bytes | Target MAC; may be zero in a request | <code style="color:#f0ad4e">aa bb cc dd ee ff</code> |
+| Target protocol address | 4 bytes | Target IPv4 address | <code style="color:#d9534f">c0 00 02 02</code> |
 | *Data* | *variable* | Not needed for the basic lab | N/A |
 
 #### Full Example:
-```text
-00 01 08 00 06 04 00 01 11 22 33 44 55 66 c0 00
-02 01 00 00 00 00 aa bb cc dd ee ff c0 00 02 02
-```
+<pre><code><span style="color:#d9534f">00 01</span> <span style="color:#5cb85c">08 00</span> <span style="color:#5bc0de">06</span> <span style="color:#f0ad4e">04</span> <span style="color:#d9534f">00 01</span> <span style="color:#5cb85c">11 22 33 44 55 66</span> <span style="color:#5bc0de">c0 00 02 01</span> <span style="color:#f0ad4e">aa bb cc dd ee ff</span> <span style="color:#d9534f">c0 00 02 02</span></code></pre>
 
 ## IPv4 header
 
@@ -102,29 +97,26 @@ Finally, at the bottom is all the bytes from the example concatenated together, 
 
 | Field | Size | Notes | Example |
 | --- | ---: | --- | --- |
-| Version | 4 bits | IPv4 value is `4` | `45` * |
+| Version | 4 bits | IPv4 value is `4` | <code style="color:#d9534f">45</code> * |
 | IHL | 4 bits | Header length in 32-bit words; `5` means 20 bytes | * |
-| DSCP | 6 bits | In this class, set to `0` | `00` * |
+| DSCP | 6 bits | In this class, set to `0` | <code style="color:#5cb85c">00</code> * |
 | ECN | 2 bits | In this class, set to `0` | * |
-| Total length | 2 bytes | IPv4 header plus payload | `00 21` |
-| Identification | 2 bytes | Fragmentation support | `12 34` |
-| Flags | 3 bits | Fragmentation control | `40 00` * |
+| Total length | 2 bytes | IPv4 header plus payload | <code style="color:#5bc0de">00 21</code> |
+| Identification | 2 bytes | Fragmentation support | <code style="color:#f0ad4e">12 34</code> |
+| Flags | 3 bits | Fragmentation control | <code style="color:#d9534f">40 00</code> * |
 | Fragment offset | 13 bits | Fragmentation support | * |
-| TTL | 1 byte | Decremented by each router | `40` |
-| Protocol | 1 byte | Identifies the next payload protocol | `11` |
-| Header checksum | 2 bytes | Covers the IPv4 header | `00 00` |
-| Source address | 4 bytes | Sender IPv4 address | `c0 00 02 01` |
-| Destination address | 4 bytes | Receiver IPv4 address | `c0 00 02 02` |
-| Options and padding | variable | Included only when IHL is greater than 5 | N/A |
+| TTL | 1 byte | Decremented by each router | <code style="color:#5cb85c">40</code> |
+| Protocol | 1 byte | Identifies the next payload protocol | <code style="color:#5bc0de">11</code> |
+| Header checksum | 2 bytes | Covers the IPv4 header | <code style="color:#f0ad4e">00 00</code> |
+| Source address | 4 bytes | Sender IPv4 address | <code style="color:#d9534f">c0 00 02 01</code> |
+| Destination address | 4 bytes | Receiver IPv4 address | <code style="color:#5cb85c">c0 00 02 02</code> |
+| Options and padding | *variable* | Included only when IHL is greater than 5 | N/A |
 | *Payload* | *variable* | UDP, TCP, ICMP, or another protocol | N/A |
 
-**Shared Bytes:** Asterisks are for bytes that are shared between fields. Byte ``45`` is ``01000101``: the first four bits, ``0100``, contains Version ``4``, and the last four bits, ``0101``, contains IHL ``5``. Byte ``00`` is ``00000000``: the first six bits are ``0`` for DSCP, and last two bits are ``0`` for ECN. Bytes ``40 00`` are ``01000000 00000000``: the first 3 bits, ``010``, are the Flags (Reserved ``0``, Don't Fragment/DF ``1``, More Fragments/MF ``0``), and the remaining 13 bits are the Fragment Offset, ``0``.
+**Shared Bytes:** Asterisks are for bytes that are shared between fields. Byte <code style="color:#d9534f">45</code> is ``01000101``: the first four bits, ``0100``, contains Version ``4``, and the last four bits, ``0101``, contains IHL ``5``. Byte <code style="color:#5cb85c">00</code> is ``00000000``: the first six bits are ``0`` for DSCP, and last two bits are ``0`` for ECN. Bytes <code style="color:#d9534f">40 00</code> are ``01000000 00000000``: the first 3 bits, ``010``, are the Flags (Reserved ``0``, Don't Fragment/DF ``1``, More Fragments/MF ``0``), and the remaining 13 bits are the Fragment Offset, ``0``.
 
 #### Full Example:
-```text
-45 00 00 21 12 34 40 00 40 11 00 00 c0 00 02 01
-c0 00 02 02
-```
+<pre><code><span style="color:#d9534f">45</span> <span style="color:#5cb85c">00</span> <span style="color:#5bc0de">00 21</span> <span style="color:#f0ad4e">12 34</span> <span style="color:#d9534f">40 00</span> <span style="color:#5cb85c">40</span> <span style="color:#5bc0de">11</span> <span style="color:#f0ad4e">00 00</span> <span style="color:#d9534f">c0 00 02 01</span> <span style="color:#5cb85c">c0 00 02 02</span></code></pre>
 
 ## UDP header
 
@@ -136,16 +128,14 @@ c0 00 02 02
 
 | Field | Size | Description | Example |
 | --- | ---: | --- | --- |
-| Source port | 2 bytes | Sending application port | `0f a0` |
-| Destination port | 2 bytes | Receiving application port | `04 d2` |
-| Length | 2 bytes | UDP header plus UDP payload | `00 0d` |
-| Checksum | 2 bytes | Set to zero in the transport lab | `00 00` |
-| *Data* | *variable* | Application payload | `68 65 6c 6c 6f` |
+| Source port | 2 bytes | Sending application port | <code style="color:#d9534f">0f a0</code> |
+| Destination port | 2 bytes | Receiving application port | <code style="color:#5cb85c">04 d2</code> |
+| Length | 2 bytes | UDP header plus UDP payload | <code style="color:#5bc0de">00 0d</code> |
+| Checksum | 2 bytes | Set to zero in the transport lab | <code style="color:#f0ad4e">00 00</code> |
+| *Data* | *variable* | Application payload | <code style="color:#d9534f">68 65 6c 6c 6f</code> |
 
 #### Full Example:
-```text
-0f a0 04 d2 00 0d 00 00 68 65 6c 6c 6f
-```
+<pre><code><span style="color:#d9534f">0f a0</span> <span style="color:#5cb85c">04 d2</span> <span style="color:#5bc0de">00 0d</span> <span style="color:#f0ad4e">00 00</span> <span style="color:#d9534f">68 65 6c 6c 6f</span></code></pre>
 
 ## TCP header
 
@@ -161,27 +151,24 @@ c0 00 02 02
 
 | Field | Size | Description | Example |
 | --- | ---: | --- | --- |
-| Source port | 2 bytes | Sending application port | `0f a0` |
-| Destination port | 2 bytes | Receiving application port | `04 d2` |
-| Sequence number | 4 bytes | Position of segment data in the byte stream | `11 22 33 44` |
-| Acknowledgment number | 4 bytes | Next byte expected by the sender of the ACK | `11 22 33 44` |
-| Data offset | 4 bits | Header length in 4-byte words; `5` means 20 bytes | `50 12` * |
+| Source port | 2 bytes | Sending application port | <code style="color:#d9534f">0f a0</code> |
+| Destination port | 2 bytes | Receiving application port | <code style="color:#5cb85c">04 d2</code> |
+| Sequence number | 4 bytes | Position of segment data in the byte stream | <code style="color:#5bc0de">11 22 33 44</code> |
+| Acknowledgment number | 4 bytes | Next byte expected by the sender of the ACK | <code style="color:#f0ad4e">11 22 33 44</code> |
+| Data offset | 4 bits | Header length in 4-byte words; `5` means 20 bytes | <code style="color:#d9534f">50 12</code> * |
 | Reserved | 3 bits | `000` in the lab; not currently used | * |
 | ECN | 3 bits | `000` in the lab | * |
 | Control bits | 6 bits | `URG`, `ACK`, `PSH`, `RST`, `SYN`, `FIN` | * |
-| Window | 2 bytes | Advertised receive window; 64 is used as a reasonable lab value | `00 40` |
-| Checksum | 2 bytes | Set to zero in the transport lab | `00 00` |
-| Urgent pointer | 2 bytes | Not used in the lab | `00 00` |
+| Window | 2 bytes | Advertised receive window; 64 is used as a reasonable lab value | <code style="color:#5cb85c">00 40</code> |
+| Checksum | 2 bytes | Set to zero in the transport lab | <code style="color:#5bc0de">00 00</code> |
+| Urgent pointer | 2 bytes | Not used in the lab | <code style="color:#f0ad4e">00 00</code> |
 | Options and padding | *variable* | Makes the header a multiple of 4 bytes | N/A |
-| *Data* | *variable* | Application payload | `68 65 6c 6c 6f` |
+| *Data* | *variable* | Application payload | <code style="color:#d9534f">68 65 6c 6c 6f</code> |
 
-**Shared Bytes:** Asterisks are for bytes that are shared between fields. Bytes ``50 12`` are ``01010000 00010010``: The first four bits ``0101`` are the Data Offset, equaling ``5`` words (20 bytes). The next three bits ``000`` are Reserved, which is just set to ``0``. The next three bits ``000`` are for ECN, and the last six bits, ``010010``, are the Control Bits, equaling ACK + SYN (using the order URG, ACK, PSH, RST, SYN, FIN). The packed fields concatenate as ``0101 000 000 010010``.
+**Shared Bytes:** Asterisks are for bytes that are shared between fields. Bytes <code style="color:#d9534f">50 12</code> are ``01010000 00010010``: The first four bits ``0101`` are the Data Offset, equaling ``5`` words (20 bytes). The next three bits ``000`` are Reserved, which is just set to ``0``. The next three bits ``000`` are for ECN, and the last six bits, ``010010``, are the Control Bits, equaling ACK + SYN (using the order URG, ACK, PSH, RST, SYN, FIN). The packed fields concatenate as ``0101 000 000 010010``.
 
 #### Full Example:
-```text
-0f a0 04 d2 11 22 33 44 11 22 33 44 50 12 00 40
-00 00 00 00 00 00 68 65 6c 6c 6f
-```
+<pre><code><span style="color:#d9534f">0f a0</span> <span style="color:#5cb85c">04 d2</span> <span style="color:#5bc0de">11 22 33 44</span> <span style="color:#f0ad4e">11 22 33 44</span> <span style="color:#d9534f">50 12</span> <span style="color:#5cb85c">00 40</span> <span style="color:#5bc0de">00 00</span> <span style="color:#f0ad4e">00 00</span> <span style="color:#d9534f">68 65 6c 6c 6f</span></code></pre>
 
 ## ICMP header
 
@@ -193,15 +180,13 @@ c0 00 02 02
 
 | Field | Size | Description | Example |
 | --- | ---: | --- | --- |
-| Type | 1 byte | Identifies the ICMP message type | `08` |
-| Code | 1 byte | Provides additional context for the message type | `00` |
-| Checksum | 2 bytes | Covers the ICMP header and message data | `00 00` |
-| Message-specific fields and data | *variable* | Depends on the ICMP message type | `00 01 00 01 68 65 6c 6c 6f` |
+| Type | 1 byte | Identifies the ICMP message type | <code style="color:#d9534f">08</code> |
+| Code | 1 byte | Provides additional context for the message type | <code style="color:#5cb85c">00</code> |
+| Checksum | 2 bytes | Covers the ICMP header and message data | <code style="color:#5bc0de">00 00</code> |
+| Message-specific fields and data | *variable* | Depends on the ICMP message type | <code style="color:#f0ad4e">00 01 00 01 68 65 6c 6c 6f</code> |
 
 #### Full Example:
-```text
-08 00 00 00 00 01 00 01 68 65 6c 6c 6f
-```
+<pre><code><span style="color:#d9534f">08</span> <span style="color:#5cb85c">00</span> <span style="color:#5bc0de">00 00</span> <span style="color:#f0ad4e">00 01 00 01 68 65 6c 6c 6f</span></code></pre>
 
 ## Various Notes
 
