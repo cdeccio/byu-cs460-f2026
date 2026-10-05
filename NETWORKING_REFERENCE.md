@@ -47,9 +47,9 @@ Finally, at the bottom is all the bytes from the example concatenated together, 
 | EtherType | 2 bytes | Identifies the payload protocol | `08 00` |
 | *Payload* | *variable* | Usually an IPv4 datagram or ARP packet. | N/A |
 
-For the 802.1Q header field, the most significant (left-most) 16 bits of the 802.1Q 
-header should have the value `0x8100` to indicate that it is an 802.1Q frame. 
-The least significant (right-most) 12 bits of the 802.1Q header should contain 
+For the 802.1Q header field, the most significant (left-most) 16 bits of the 802.1Q
+header have the value `0x8100` to indicate that it is an 802.1Q frame.
+The least significant (right-most) 12 bits of the 802.1Q header contain
 the value of the VLAN ID. The 4 bits in between can be left as zero.
 
 #### Full Example:
@@ -82,10 +82,10 @@ the value of the VLAN ID. The 4 bits in between can be left as zero.
 | Hardware address length | 1 byte | Ethernet MAC length: `6` | `06` |
 | Protocol address length | 1 byte | IPv4 address length: `4` | `04` |
 | Opcode | 2 bytes | Request `ARPOP_REQUEST = 1`, reply `ARPOP_REPLY = 2` | `00 01` |
-| Sender hardware address | 6 bytes | Sender MAC | `11 22 33 44 55 66` |
-| Sender protocol address | 4 bytes | Sender IPv4 address | `c0 00 02 01` |
-| Target hardware address | 6 bytes | Target MAC; may be zero in a request | `aa bb cc dd ee ff` |
-| Target protocol address | 4 bytes | Target IPv4 address | `c0 00 02 02` |
+| Sender hardware address | 6 bytes | Sender MAC | `11 22 33 44 55 66` (11:22:33:44:55:66) |
+| Sender protocol address | 4 bytes | Sender IPv4 address | `c0 00 02 01` (192.0.2.1) |
+| Target hardware address | 6 bytes | Target MAC; may be zero in a request | `aa bb cc dd ee ff` (aa:bb:cc:dd:ee:ff) |
+| Target protocol address | 4 bytes | Target IPv4 address | `c0 00 02 02` (192.0.2.1) |
 | *Data* | *variable* | Not needed for the basic lab | N/A |
 
 #### Full Example:
@@ -118,8 +118,8 @@ the value of the VLAN ID. The 4 bits in between can be left as zero.
 | TTL | 1 byte | Decremented by each router | `40` |
 | Protocol | 1 byte | Identifies protocol of data contained in payload | `11` |
 | Header checksum | 2 bytes | Used for error checking of IPv4 header | `00 00` |
-| Source address | 4 bytes | Sender IPv4 address | `c0 00 02 01` |
-| Destination address | 4 bytes | Receiver IPv4 address | `c0 00 02 02` |
+| Source address | 4 bytes | Sender IPv4 address | `c0 00 02 01` (192.0.2.1) |
+| Destination address | 4 bytes | Receiver IPv4 address | `c0 00 02 02` (192.0.2.2) |
 | Options and padding | variable | Included only when IHL is greater than 5 | N/A |
 | *Payload* | *variable* | UDP, TCP, ICMP, or another protocol | N/A |
 
