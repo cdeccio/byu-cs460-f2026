@@ -404,11 +404,10 @@ following distribution:
 ## Ethernet Frames
 
 Your code will need to parse Ethernet frames from the "wire" as `bytes`
-instances.  The frame that you will be receiving looks like this:
-
-| Destination MAC Addr | Source MAC Addr | EtherType | Payload |
-| :---: | :---: | :---: | :---: |
-| (48 bits) | (48 bits) | (16 bits) | (variable) |
+instances. See the [Networking Reference](../NETWORKING_REFERENCE.md#ethernet) for
+information on the standard Ethernet frame format. You will also be working with
+802.1Q Ethernet frames. Information on the 802.1Q frame format is also found in
+the [Networking Reference](../NETWORKING_REFERENCE.md#8021q-vlan-ethernet-frame).
 
 Note that a complete Ethernet frame also has fields for preamble and Cyclic
 Redundancy Check (CRC) when it actually travels on the wire.  However, these
@@ -416,22 +415,10 @@ frames are read from a raw socket (i.e., of type `SOCK_RAW`, as opposed to
 `SOCK_STREAM` or `SOCK_DGRAM`), and those two fields are stripped before it is
 passed to the application.
 
-In the case of 802.1Q, the frame will look like this:
-
-| Destination MAC Addr | Source MAC Addr | 802.1Q Header | EtherType | Payload |
-| :---: | :---: | :---: | :---: | :---: |
-| (48 bits) | (48 bits) | (32 bits) | (16 bits) | (variable) |
-
-The most signficant (left-most) 16 bits of the 802.1Q header should have the
-value 0x8100 to indicate that it is an 802.1Q frame.  The least significant
-(right-most) 12 bits of the 802.1Q header should contain the value of the VLAN
-ID.  The 4 bits in between can be left as zero.
-
 Note that there are libraries, including scapy, for parsing Ethernet frames and
 higher-level packets, but you may not use them for the lab.
 
-See the [Networking Reference](../NETWORKING_REFERENCE.md#ethernet) for
-additional information on Ethernet frames.
+
 
 ## Working with `bytes` Instances
 
