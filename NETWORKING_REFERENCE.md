@@ -4,14 +4,14 @@ This is a consolidated reference for the packet structures implemented in CS 460
 
 # Table of Contents
 
- - [Overview](#0-overview)
- - [Ethernet](#1-ethernet)
- - [ARP packet](#2-arp-packet)
- - [IPv4 header](#3-ipv4-header)
- - [UDP header](#4-udp-header)
- - [TCP header](#5-tcp-header)
- - [ICMP header](#6-icmp-header)
- - [Various Notes](#7-various-notes)
+ - [Overview](#overview)
+ - [Ethernet](#ethernet)
+ - [ARP packet](#arp-packet)
+ - [IPv4 header](#ipv4-header)
+ - [UDP header](#udp-header)
+ - [TCP header](#tcp-header)
+ - [ICMP header](#icmp-header)
+ - [Various Notes](#various-notes)
 	 - [Endianness](#endianness)
 	 - [Layering Options](#layering-options)
 
