@@ -737,12 +737,12 @@ following distribution:
    - 8 points for correct doctests in `prefix.py`
    - 8 points for running the following without error:
      ```bash
-     python -m doctest prefix.py
+     python3 -m doctest prefix.py
      ```
    - 8 points for correct doctests in `forwarding_table.py`
    - 8 points for running the following without error:
      ```bash
-     python -m doctest forwarding_table.py
+     python3 -m doctest forwarding_table.py
      ```
  - Part 3: 28 points
    - 22 points for first 11 tests (2 points each)
